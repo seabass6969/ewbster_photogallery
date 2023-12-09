@@ -53,6 +53,14 @@
 #images .image:nth-of-type(28n){-webkit-animation-delay:6.2s;}
 #images .image:nth-of-type(29n){-webkit-animation-delay:7.2s;}
 #images .image:nth-of-type(30n){-webkit-animation-delay:5s;}
+#images .image:nth-of-type(31n){-webkit-animation-delay:1s;}
+#images .image:nth-of-type(32n){-webkit-animation-delay:3s;}
+#images .image:nth-of-type(33n){-webkit-animation-delay:2s;}
+#images .image:nth-of-type(34n){-webkit-animation-delay:4s;}
+#images .image:nth-of-type(35n){-webkit-animation-delay:7s;}
+#images .image:nth-of-type(36n){-webkit-animation-delay:5s;}
+#images .image:nth-of-type(37n){-webkit-animation-delay:4s;}
+#images .image:nth-of-type(38n){-webkit-animation-delay:2s;}
 .image{
     display: inline-block;
     width: 100px;
