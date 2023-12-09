@@ -11,6 +11,7 @@
     <h2>You have been warned</h2>
     <button on:click={ewan}>I want to look at ewan Picture!</button>
     <h5>Ewb photo Gallery</h5>
+    <img src="./ewan_goofy/Snapchat-1713029345.jpg" alt="ewan pic intro" class="ewb"/>
 </div>
 {/if}
 {#if continues == true}
@@ -60,6 +61,8 @@
     z-index: 1;
     -webkit-animation: falling 5s 0s infinite;
     opacity: 0;
+    -webkit-animation-timing-function:ease-in-out;
+
     @media (max-width: 600px){
         width: 45px;
     }
@@ -81,6 +84,19 @@
         -webkit-transform:
             translate3d(0px,-200px,0);
         opacity: 0;
+    }
+}
+.image {position:relative;top:-50px;width:100%;text-align: right;}
+.ewb {
+    width: 90px;
+    -webkit-animation: opacity 1s 0s infinite;
+}
+@-webkit-keyframes opacity {
+    0%{
+        filter:blur(0px);
+    }
+    100%{
+        filter:blur(10px);
     }
 }
 </style>

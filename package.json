@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-cloudflare": "^2.3.4",
+    "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.4",
     "sass": "^1.63.6",
     "svelte": "^4.2.7",
