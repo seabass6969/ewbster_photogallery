@@ -94,7 +94,6 @@
         opacity: 0;
     }
 }
-.image {position:relative;top:-50px;width:100%;text-align: right;}
 .ewb {
     width: 90px;
     -webkit-animation: opacity 1s 0s infinite;
