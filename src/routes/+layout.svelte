@@ -1,6 +1,7 @@
 <script>
-  import "../app.scss";
-</script>
-
-<slot />
-
+    import "../app.scss";
+  </script>
+  
+  <slot />
+  
+  

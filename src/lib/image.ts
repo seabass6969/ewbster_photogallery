@@ -1,3 +1,8 @@
+import {getRandom} from './random'
+export const getRandom_image_url = () => {
+    const random = getRandom(0, image_url.length - 1)
+    return image_url[random]
+}
 export const image_url= [
 "./ewan_goofy/20230210_214018_682000FA.png",
 "./ewan_goofy/20230328_191956_0760A20D.png",
