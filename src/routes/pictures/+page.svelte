@@ -61,6 +61,7 @@
     @media (max-width: 600px){
         width: 45px;
     }
+    margin: 10px
 }
 
 @-webkit-keyframes falling {
@@ -70,14 +71,14 @@
         opacity: 0.1;
     }
     
-     50% {
+    50% {
         -webkit-transform:
             translate3d(0,-100px,0);
         opacity: 1;
     }
     100% {
         -webkit-transform:
-            translate3d(0px,-200px,0);
+            translate3d(0px,-300px,0);
         opacity: 0;
     }
 }
