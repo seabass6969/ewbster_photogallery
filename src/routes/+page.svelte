@@ -10,6 +10,8 @@
     <button on:click={tinder}>I want to look at ewan's Tinder!</button>
     <h5>Ewb photo Gallery</h5>
     <img src="./ewan_goofy/Snapchat-1713029345.jpg" alt="ewan pic intro" class="ewb"/>
+<br>
+<a href="https://github.com/seabass6969/ewbster_photogallery">github page</a>
 </div>
 <style>
 .ewb {

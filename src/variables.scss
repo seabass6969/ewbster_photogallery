@@ -1,1 +1,36 @@
 /* Variables and mixins declared here will be available in all other SCSS files */
+$secondary-color: #F2CF66;
+$alert-color: #FF0000;
+@mixin bigbutton-style {
+    margin-left:10vw;
+    margin-right:10vw;
+    width: 80vw;
+    border-radius: 30px;
+    border-color: none;
+    border: 0px;
+}
+@mixin boxshadow-btn {
+    
+    box-shadow: 10px 7px 0px $secondary-color;
+    animation: forwards 300ms boxshadowbtnopen;
+    &:hover{
+        animation: forwards 300ms boxshadowbtnclose;
+    }
+    cursor: grabbing;
+}
+@keyframes boxshadowbtnclose{
+    0%{
+        box-shadow: 10px 10px 0px $secondary-color;
+    }
+    100%{
+        box-shadow: 7px 7px 0px $secondary-color;
+    }
+}
+@keyframes boxshadowbtnopen {
+    0%{
+        box-shadow: 7px 7px 0px $secondary-color;
+    }
+    100%{
+        box-shadow: 10px 10px 0px $secondary-color;
+    }
+}

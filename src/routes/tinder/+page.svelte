@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import { sleep } from "$lib/sleep";
 	import { getRandom_image_url } from "$lib/image";
 	import { fly } from "svelte/transition";
+	import { OpenDialog } from "$lib/DialogUtils";
+	import { alertType } from "$lib/T";
 	let random_image_url = getRandom_image_url();
     let visblity = true
     const yes = async () => {
@@ -11,7 +13,7 @@
         visblity = true
     }
     const no = () => { 
-        alert("No")
+        OpenDialog("No", alertType.simple)
     }
 </script>
 
