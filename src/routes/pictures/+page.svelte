@@ -1,13 +1,44 @@
 <script lang="ts">
-    import {image_url} from '../../lib/image';
+	import { onMount } from 'svelte';
+    import {getRandom_image_url, image_url} from '../../lib/image';
+	import { sleep } from '$lib/sleep';
+	import { blur } from 'svelte/transition';
+    enum imageStyle {
+        imagefall,
+        looping,
+        heartbeating
+    }
+    let opened = imageStyle.heartbeating
+    onMount(async ()=> {
+        while(true){
+            opened = imageStyle.imagefall
+            await sleep(10000)
+            opened = imageStyle.heartbeating
+            await sleep(2000)
+            opened = imageStyle.looping
+            await sleep(2000)
+        }
+    })
 </script>
 
 <main>
-<div id="images">
-{#each image_url as img}
-        <img src={img} alt="ewan_goofy.jpg" class="image"/>
-{/each}
-</div>
+{#if opened == imageStyle.imagefall}
+    <div id="images" out:blur>
+    {#each image_url as img}
+            <img src={img} alt="ewan_goofy.jpg" class="image" />
+    {/each}
+    </div>
+{/if}
+{#if opened == imageStyle.looping}
+    <div class="center">
+        <img src={getRandom_image_url()} alt="" class="imagePopUp circle">
+    </div>
+{/if}
+{#if opened == imageStyle.heartbeating}
+    <div class="center">
+        <img src={getRandom_image_url()} alt="" class="imagePopUp heartBeat">
+    </div>
+{/if}
 </main>
 <style lang="scss">
 #images .image:nth-of-type(n){-webkit-animation-delay:1s;}
@@ -50,7 +81,6 @@
 #images .image:nth-of-type(38n){-webkit-animation-delay:2s;}
 .image{
     display: inline-block;
-    width: 100px;
     box-shadow: 2px 3px 1px #222;
     border: 1px solid #333;
     z-index: 1;
@@ -58,6 +88,7 @@
     opacity: 0;
     -webkit-animation-timing-function:ease-in-out;
 
+    width: 100px;
     @media (max-width: 600px){
         width: 45px;
     }
@@ -73,13 +104,58 @@
     
     50% {
         -webkit-transform:
-            translate3d(0,-100px,0);
+            translate3d(0,-200px,0);
         opacity: 1;
     }
     100% {
         -webkit-transform:
-            translate3d(0px,-300px,0);
+            translate3d(0px,-500px,0);
         opacity: 0;
+    }
+}
+.imagePopUp {
+    height: 70vh;
+}
+.center {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle {
+    animation: circling forwards infinite 0.5s;
+}
+@keyframes circling {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.heartBeat {
+    animation: heart forwards infinite 0.5s;
+    border-style: solid;
+    border-color: red;
+    border-radius: 5px;
+    border-width: 10px;
+}
+@keyframes heart {
+    0%{
+        transform:scale(100%);
+    }
+    30%{
+        transform:scale(120%);
+    }
+    60%{
+        transform:scale(100%);
+    }
+    90%{
+        transform:scale(120%);
+    }
+    100%{
+        transform:scale(100%);
     }
 }
 </style>
