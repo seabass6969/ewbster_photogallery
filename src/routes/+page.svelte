@@ -5,11 +5,19 @@
     const tinder = () =>{location.href = "/tinder"} 
     const gallery= () =>{location.href = "/gallery"} 
     let countdown = false
+    let videos:HTMLVideoElement
+    let started = false
 </script>
 {#if countdown == false}
 <div class="floating" out:fade={{duration: 1000}}>
-    <video src="/countdown.webm" autoplay class="countdown" on:ended={() => countdown = true} ></video>
+    <video src="/countdown.webm" class="countdown" on:ended={() => countdown = true} bind:this={videos}></video>
 </div>
+{#if started == false}
+    
+<button class="float" out:fade={{duration: 1000}} on:click={() => {videos.play(); started = true}}>
+    <h1>click to get started</h1>
+</button>
+{/if}
 {:else}
 <div class="warning" in:fade={{delay: 1000, duration: 500}}>
     <h1>Warning: This might use up a lot of data!</h1>
@@ -57,5 +65,17 @@
     left: -10px;
     top: -10px;
     background-color: grey;
+}
+.float{
+    position: absolute;
+    width: calc(100vw + 10px);
+    height: calc(100vh + 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -10px;
+    top: -10px;
+    background-color: transparent;
+    z-index: 99;
 }
 </style>

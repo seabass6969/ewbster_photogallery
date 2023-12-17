@@ -1,11 +1,11 @@
 <script>
 	import { image_url } from "$lib/image";
-	import { fly } from "svelte/transition";
+	import Image from "../../components/Image.svelte";
 
 </script>
 <div class="list">
     {#each image_url as image}
-        <img src={image} alt="ewan goofy" class="image" in:fly>
+        <Image src={image} />
     {/each}
 </div>
 <style>
@@ -16,20 +16,13 @@
 display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-flow: dense;
+  row-gap: 1vh;
+  column-gap: 1vw;
   width: 100%;
     /* display: grid;
     align-items: center;
     justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); */
-}
-.image{
-    box-shadow: 5px 5px 1px #222;
-    border: 1px solid #333;
-    width: 100px;
-    @media (max-width: 600px){
-        width: 45px;
-    }
-    margin: 10px
 }
 </style>
