@@ -2,7 +2,9 @@
 	import { onMount } from 'svelte';
     import {getRandom_image_url, image_url} from '../../lib/image';
 	import { sleep } from '$lib/sleep';
-	import { blur } from 'svelte/transition';
+	import { blur, fly } from 'svelte/transition';
+	import MusicBox from '../../components/MusicBox.svelte';
+	import Thinking from '../../components/thinking.svelte';
     enum imageStyle {
         imagefall,
         looping,
@@ -22,6 +24,9 @@
 </script>
 
 <main>
+    <div class="float">
+        <MusicBox />
+    </div>
 {#if opened == imageStyle.imagefall}
     <div id="images" out:blur>
     {#each image_url as img}
@@ -33,6 +38,7 @@
     <div class="center">
         <img src={getRandom_image_url()} alt="" class="imagePopUp circle">
     </div>
+    <Thinking />
 {/if}
 {#if opened == imageStyle.heartbeating}
     <div class="center">
@@ -157,5 +163,12 @@
     100%{
         transform:scale(100%);
     }
+}
+.float{
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

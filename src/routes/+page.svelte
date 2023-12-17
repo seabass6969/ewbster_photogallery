@@ -12,6 +12,7 @@
     <img src="./ewan_goofy/Snapchat-1713029345.jpg" alt="ewan pic intro" class="ewb"/>
 <br>
 <a href="https://github.com/seabass6969/ewbster_photogallery">github page</a>
+<a href="/credit">credit</a>
 </div>
 <style>
 .ewb {
