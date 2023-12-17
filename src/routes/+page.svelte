@@ -1,24 +1,33 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
     import {image_url} from '../lib/image';
+	import { OpenDialog } from '$lib/DialogUtils';
+	import { alertType } from '$lib/T';
     const ewan = () => {location.href = "/pictures"}
     const tinder = () =>{location.href = "/tinder"} 
     const gallery= () =>{location.href = "/gallery"} 
     let countdown = false
     let videos:HTMLVideoElement
     let started = false
+    function catchme() {
+        OpenDialog("You will never catch me!", alertType.simple)
+    }
 </script>
 {#if countdown == false}
 <div class="floating" out:fade={{duration: 1000}}>
     <video src="/countdown.webm" class="countdown" on:ended={() => countdown = true} bind:this={videos}></video>
 </div>
 {#if started == false}
-    
 <button class="float" out:fade={{duration: 1000}} on:click={() => {videos.play(); started = true}}>
     <h1>click to get started</h1>
 </button>
 {/if}
 {:else}
+    {#each image_url as image}
+    <button class="moving" on:click={catchme}>
+        <img src={image} alt="" class="movingimage">
+    </button>
+    {/each}
 <div class="warning" in:fade={{delay: 1000, duration: 500}}>
     <h1>Warning: This might use up a lot of data!</h1>
     <h2>You have been warned</h2>
@@ -77,5 +86,72 @@
     top: -10px;
     background-color: transparent;
     z-index: 99;
+}
+.moving {
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    animation: forwards moving infinite 5000ms ;
+    left: -10px;
+    top: -10px;
+    background-color: transparent;
+    padding: 0;
+}
+.movingimage{
+    width: 2vw;
+    height: 2vw;
+}
+@keyframes moving {
+    0%{
+        transform: translate(0vw, 0vh);
+    }
+    10%{
+        transform: translate(10vw, 10vh);
+    }
+    20%{
+        transform: translate(60vw, 10vh);
+    }
+    30%{
+        transform: translate(30vw, 70vh);
+    }
+    40%{
+        transform: translate(90vw, 30vh);
+    }
+    50%{
+        transform: translate(10vw, 90vh);
+    }
+    60%{
+        transform: translate(50vw, 10vh);
+    }
+    70%{
+        transform: translate(70vw, 30vh);
+    }
+    80%{
+        transform: translate(90vw, 70vh);
+    }
+    90%{
+        transform: translate(10vw, 10vh);
+    }
+    100%{
+        transform: translate(0vw, 0vh);
+    }
+}
+.moving:nth-child(2n){
+    animation-delay: 1100ms;
+}
+.moving:nth-child(3n){
+    animation-delay: 2100ms;
+}
+.moving:nth-child(4n){
+    animation-delay: 2000ms;
+}
+.moving:nth-child(5n){
+    animation-delay: 3100ms;
+}
+.moving:nth-child(6n){
+    animation-delay: 4000ms;
+}
+.moving:nth-child(7n){
+    animation-delay: 1000ms;
 }
 </style>
