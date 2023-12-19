@@ -15,13 +15,8 @@
 </script>
 {#if countdown == false}
 <div class="floating" out:fade={{duration: 1000}}>
-    <video src="/countdown.webm" class="countdown" on:ended={() => countdown = true} bind:this={videos}></video>
+    <video src="/countdown.webm" autoplay muted class="countdown" on:ended={() => countdown = true} bind:this={videos}></video>
 </div>
-{#if started == false}
-<button class="float" out:fade={{duration: 1000}} on:click={() => {videos.play(); started = true}}>
-    <h1>click to get started</h1>
-</button>
-{/if}
 {:else}
     {#each image_url as image}
     <button class="moving" on:click={catchme}>
@@ -74,18 +69,6 @@
     left: -10px;
     top: -10px;
     background-color: grey;
-}
-.float{
-    position: absolute;
-    width: calc(100vw + 10px);
-    height: calc(100vh + 10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    left: -10px;
-    top: -10px;
-    background-color: transparent;
-    z-index: 99;
 }
 .moving {
     position: absolute;
